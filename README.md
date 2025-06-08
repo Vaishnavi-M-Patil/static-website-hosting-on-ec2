@@ -45,7 +45,7 @@ mv /root/templatemo_586_scholar/* /var/www/html/
 curl localhost
 ```
 
-#Demonstartion:
+## 📸 Demonstration:  
 ### Launching EC2 instance using Amazon Linux AMI.
 ![launch instance](https://github.com/Vaishnavi-M-Patil/static-website-hosting/blob/main/assets/inst-launch.png)
 
@@ -55,6 +55,7 @@ curl localhost
 ### Allow SSH and HTTP in the Security Group.
 - SSH (port 22): You can connect to the EC2 instance via terminal or MobaXterm.
 - HTTP (port 80): Your static website is publicly accessible from any browser.  
+
 ![security group](https://github.com/Vaishnavi-M-Patil/static-website-hosting/blob/main/assets/sec-group.png)
 
 
