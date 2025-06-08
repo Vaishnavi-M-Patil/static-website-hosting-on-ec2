@@ -30,7 +30,7 @@ systemctl start httpd
 systemctl enable httpd
 
 # Copy zipped website template from local to EC2 (run from your local system)
-scp -i vir-key.pem templatemo_586_scholar.zip ec2-user@<EC2_PUBLIC_IP>:/home/ec2-user
+scp -i vir-key.pem templatemo_586_scholar.zip ec2-user@18.212.41.213:/home/ec2-user
 
 # Move the ZIP file to /root directory
 mv /home/ec2-user/templatemo_586_scholar.zip /root/
