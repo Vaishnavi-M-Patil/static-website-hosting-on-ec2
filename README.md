@@ -18,7 +18,7 @@ This project demonstrates how to deploy a static website using an Apache HTTP Se
 
 
 ## 💻 Commands to Execute:
-```
+```bash
 # Switch to root user
 sudo -i
 
