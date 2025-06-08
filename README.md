@@ -46,38 +46,38 @@ curl localhost
 ```
 
 ## 📸 Demonstration:  
-### Launching EC2 instance using Amazon Linux AMI.
+### ✅ Launching EC2 instance using Amazon Linux AMI.
 ![launch instance](https://github.com/Vaishnavi-M-Patil/static-website-hosting/blob/main/assets/inst-launch.png)
 
-### Successfully launched the EC2 instance with a public IPv4 address.
+### ✅ Successfully launched the EC2 instance with a public IPv4 address.
 ![Instance](https://github.com/Vaishnavi-M-Patil/static-website-hosting/blob/main/assets/instance-create.png)
 
-### Allow SSH and HTTP in the Security Group.
+### ✅ Allow SSH and HTTP in the Security Group.
 - SSH (port 22): You can connect to the EC2 instance via terminal or MobaXterm.
 - HTTP (port 80): Your static website is publicly accessible from any browser.  
 
 ![security group](https://github.com/Vaishnavi-M-Patil/static-website-hosting/blob/main/assets/sec-group.png)
 
 
-### Connecting to the instance via SSH using MobaXterm.
+### ✅ Connecting to the instance via SSH using MobaXterm.
 ![mobaXterm](https://github.com/Vaishnavi-M-Patil/static-website-hosting/blob/main/assets/mobaxterm.png)
 ![ssh](https://github.com/Vaishnavi-M-Patil/static-website-hosting/blob/main/assets/ssh.png)
 
-### Installing Apache HTTP server on the EC2 instance using yum install httpd.
+### ✅ Installing Apache HTTP server on the EC2 instance using yum install httpd.
 ![install httpd](https://github.com/Vaishnavi-M-Patil/static-website-hosting/blob/main/assets/install-httpd.png)
 
-### Starting and enabling the Apache server using systemctl commands.
+### ✅ Starting and enabling the Apache server using systemctl commands.
 ![start and enable service](https://github.com/Vaishnavi-M-Patil/static-website-hosting/blob/main/assets/systemctl.png)
 
-### SCP used to transfer the website template from local machine to EC2.
+### ✅ SCP used to transfer the website template from local machine to EC2.
 ![copy template](https://github.com/Vaishnavi-M-Patil/static-website-hosting/blob/main/assets/copy-template.png)
 
-### Moving the ZIP file into root directory and unzipping the template.
+### ✅ Moving the ZIP file into root directory and unzipping the template.
 ![unzip](https://github.com/Vaishnavi-M-Patil/static-website-hosting/blob/main/assets/unzip.png)
 
-### Website files are being transferred to /var/www/html/ for public hosting.
+### ✅ Website files are being transferred to /var/www/html/ for public hosting.
 ![move to html directory](https://github.com/Vaishnavi-M-Patil/static-website-hosting/blob/main/assets/move-html.png)
 
-### Accessing the website in a browser using the EC2 instance’s public IP.
+### ✅ Accessing the website in a browser using the EC2 instance’s public IP.
 ![output](https://github.com/Vaishnavi-M-Patil/static-website-hosting/blob/main/assets/output.png)
 
