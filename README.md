@@ -1,81 +1,82 @@
-# Static-website-hosting-on-EC2-
-Hosting a static website on Amazon EC2 involves deploying a web server on an EC2 instance and serving static HTML, CSS, and other files. EC2 is a scalable cloud computing service, and hosting a static website on it means you're responsible for configuring the web server, managing security, and maintaining the infrastructure.
+# Static Website Hosting on Amazon EC2
+This project demonstrates how to deploy a static website using an Apache HTTP Server on an AWS EC2 instance. It involves setting up an Amazon Linux server, configuring security, installing necessary packages, and deploying static web content.
+
+## 🧰 Prerequisites:
+- AWS Account
+- Basic knowledge of Linux commands
+- SSH client (e.g., PuTTY, MobaXterm, or terminal)
+
+## 🚀 Steps to Deploy:
 1) Login into AWS Cloud Account
-
 2) Launch EC2 Instance ( AMI : Amazon Linux )
-
-3) Connect to EC2 instance using Putty / MobaXterm
-
-4) Install HTTPD Webserver in EC2 instance
-
+3) Connect to EC2 instance using MobaXterm
+4) Install httpd Webserver in EC2 instance
 5) Setup Website in EC2 instance
-
 6) Configure Security Groups
-	(SSH - 22 for admin access & HTTP - 80 for users to access our website)
-
+	- SSH --> 22 for admin access & HTTP --> 80 for users to access our website
 7) Access Website from Browser using EC2 Instance Public IP
 
 
-Commands To Execute
--------------------------
-$ sudo su
+## 💻 Commands to Execute:
+```
+# Switch to root user
+sudo -i
 
-$ yum update -y
+# Install Apache (HTTPD) web server
+yum install httpd -y
 
-$ yum install httpd -y
+# Start and enable Apache service
+systemctl start httpd
+systemctl enable httpd
 
-$ service httpd start
+# Copy zipped website template from local to EC2 (run from your local system)
+scp -i vir-key.pem templatemo_586_scholar.zip ec2-user@<EC2_PUBLIC_IP>:/home/ec2-user
 
-$ cd /var/www/html
+# Move the ZIP file to /root directory
+mv /home/ec2-user/templatemo_586_scholar.zip /root/
 
-$ echo "Hello! Welcome to AWS Session " > index.html
+# Navigate and unzip the template
+unzip templatemo_586_scholar.zip
+
+# Move the website files to the web root
+mv /root/templatemo_586_scholar/* /var/www/html/
+
+# Verify Apache is serving the website
+curl localhost
+```
 
 #Demonstartion:
+### Launching EC2 instance using Amazon Linux AMI.
+![launch instance](https://github.com/Vaishnavi-M-Patil/static-website-hosting/blob/main/assets/inst-launch.png)
 
-![Screenshot (409)](https://github.com/vishakhadhonde9/Static-website-hosting-on-EC2-/assets/97825776/2d8d70b4-84a5-46ed-9f83-fc51814aeb91)
+### Successfully launched the EC2 instance with a public IPv4 address.
+![Instance](https://github.com/Vaishnavi-M-Patil/static-website-hosting/blob/main/assets/instance-create.png)
 
-![Screenshot (410)](https://github.com/vishakhadhonde9/Static-website-hosting-on-EC2-/assets/97825776/e9955d06-d88c-4002-9001-d23816d52388)
-
-
-![Screenshot (412)](https://github.com/vishakhadhonde9/Static-website-hosting-on-EC2-/assets/97825776/e8905fe6-872f-49a8-86b2-b552d7e4e884)
-
-![Screenshot (413)](https://github.com/vishakhadhonde9/Static-website-hosting-on-EC2-/assets/97825776/82666d57-9987-4bc3-a9cc-7e3f235d8d8e)
-
-
-![Screenshot (415)](https://github.com/vishakhadhonde9/Static-website-hosting-on-EC2-/assets/97825776/57ea1a43-bc14-4f05-b762-33e1d02407f4)
-
-![Screenshot (416)](https://github.com/vishakhadhonde9/Static-website-hosting-on-EC2-/assets/97825776/9662ae7d-14f1-4233-a922-a2221d91671a)
+### Allow SSH and HTTP in the Security Group.
+- SSH (port 22): You can connect to the EC2 instance via terminal or MobaXterm.
+- HTTP (port 80): Your static website is publicly accessible from any browser.  
+![security group](https://github.com/Vaishnavi-M-Patil/static-website-hosting/blob/main/assets/sec-group.png)
 
 
-![Screenshot (417)](https://github.com/vishakhadhonde9/Static-website-hosting-on-EC2-/assets/97825776/a7aedd77-3796-49de-8b59-5d882d0dda4e)
+### Connecting to the instance via SSH using MobaXterm.
+![mobaXterm](https://github.com/Vaishnavi-M-Patil/static-website-hosting/blob/main/assets/mobaxterm.png)
+![ssh](https://github.com/Vaishnavi-M-Patil/static-website-hosting/blob/main/assets/ssh.png)
 
+### Installing Apache HTTP server on the EC2 instance using yum install httpd.
+![install httpd](https://github.com/Vaishnavi-M-Patil/static-website-hosting/blob/main/assets/install-httpd.png)
 
-![Screenshot (418)](https://github.com/vishakhadhonde9/Static-website-hosting-on-EC2-/assets/97825776/ec8a5d5b-b54b-4267-90ad-f17894485286)
+### Starting and enabling the Apache server using systemctl commands.
+![start and enable service](https://github.com/Vaishnavi-M-Patil/static-website-hosting/blob/main/assets/systemctl.png)
 
-![Screenshot (419)](https://github.com/vishakhadhonde9/Static-website-hosting-on-EC2-/assets/97825776/ed4b1eb5-b3b2-40d9-9a3c-52a9e2d9cfb4)
+### SCP used to transfer the website template from local machine to EC2.
+![copy template](https://github.com/Vaishnavi-M-Patil/static-website-hosting/blob/main/assets/copy-template.png)
 
+### Moving the ZIP file into root directory and unzipping the template.
+![unzip](https://github.com/Vaishnavi-M-Patil/static-website-hosting/blob/main/assets/unzip.png)
 
-![Screenshot (424)](https://github.com/vishakhadhonde9/Static-website-hosting-on-EC2-/assets/97825776/aec2c217-cd79-4cec-9313-63c548ae870a)
+### Website files are being transferred to /var/www/html/ for public hosting.
+![move to html directory](https://github.com/Vaishnavi-M-Patil/static-website-hosting/blob/main/assets/move-html.png)
 
+### Accessing the website in a browser using the EC2 instance’s public IP.
+![output](https://github.com/Vaishnavi-M-Patil/static-website-hosting/blob/main/assets/output.png)
 
-![Screenshot (425)](https://github.com/vishakhadhonde9/Static-website-hosting-on-EC2-/assets/97825776/61014ef2-c0fe-43c2-94d9-6a40fc87f4f5)
-
-
-![Screenshot (426)](https://github.com/vishakhadhonde9/Static-website-hosting-on-EC2-/assets/97825776/fbc6e896-1beb-486e-b0bd-e4665516a1d1)
-
-![Screenshot (427)](https://github.com/vishakhadhonde9/Static-website-hosting-on-EC2-/assets/97825776/39b350aa-7058-40a0-a419-90d3284deb14)
-
-
-
-![Screenshot (428)](https://github.com/vishakhadhonde9/Static-website-hosting-on-EC2-/assets/97825776/20ba93bc-eb12-4253-9405-da0656459204)
-
-
-![Screenshot (429)](https://github.com/vishakhadhonde9/Static-website-hosting-on-EC2-/assets/97825776/378bff43-6572-41ea-bd45-e818032256f7)
-
-![Screenshot (430)](https://github.com/vishakhadhonde9/Static-website-hosting-on-EC2-/assets/97825776/c3519ecf-1456-4239-a6c4-22b106bf5ad2)
-
-![Screenshot (431)](https://github.com/vishakhadhonde9/Static-website-hosting-on-EC2-/assets/97825776/1c1c3b14-8abb-4add-9e25-e5db3d8c49ce)
-
-
-![Screenshot (432)](https://github.com/vishakhadhonde9/Static-website-hosting-on-EC2-/assets/97825776/cb3a1e27-a344-4d93-95dd-d5de395d6dea)# static-website-hosting
-host static website using apache/nginx on linux server
